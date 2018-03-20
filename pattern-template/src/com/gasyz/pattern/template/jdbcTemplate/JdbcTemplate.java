@@ -1,8 +1,8 @@
 package com.gasyz.pattern.template.jdbcTemplate;
 
 import javax.sql.DataSource;
-import javax.xml.transform.Result;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class JdbcTemplate {
@@ -22,7 +22,7 @@ public class JdbcTemplate {
             //3、执行语句集，并且获得结果集
             ResultSet rs = this.executeQuery(pstmt, values);
             //4、解析结果集
-            List<?> result = this.parseREsultSEt(rs, rowMapper);
+            List<?> result = this.parseResultSet(rs, rowMapper);
             //5、关闭结果集
             this.closeResultSet(rs);
             //6、关闭语句集
@@ -51,8 +51,12 @@ public class JdbcTemplate {
         return pstmt.executeQuery();
     }
 
-    private List<?> parseREsultSEt(ResultSet rs,RowMapper rowMapper) {
-        return null;
+    private List<?> parseResultSet(ResultSet rs,RowMapper rowMapper) throws SQLException {
+        ArrayList<Object> list = new ArrayList<>();
+        while (rs.next()) {
+            list.add(rowMapper.mapRow(rs));
+        }
+        return list;
     }
 
 
