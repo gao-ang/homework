@@ -1,4 +1,4 @@
-package com.gasyz.gamybatis;
+package com.gasyz.gamybatis.v1;
 
 
 import java.sql.*;

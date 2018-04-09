@@ -1,4 +1,4 @@
-package com.gasyz.gamybatis;
+package com.gasyz.gamybatis.v1;
 
 import java.lang.reflect.Proxy;
 import java.util.HashMap;
@@ -23,7 +23,7 @@ public class GAConfiguration {
      * xml解析好了
      */
     static class UserMapperXml {
-        public static final String namespace = "com.gasyz.gamybatis.UserMapper";
+        public static final String namespace = "com.gasyz.gamybatis.v1.UserMapper";
 
         public static final Map<String,String> methodSqlMapping = new HashMap<String, String>();
 

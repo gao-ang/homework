@@ -1,4 +1,4 @@
-package com.gasyz.gamybatis;
+package com.gasyz.gamybatis.v1;
 
 /**
  * Created by gaoang on 2018/4/9.
