@@ -1,4 +1,4 @@
-package com.gasyz.gamybatis.v2;
+package com.gasyz.gamybatis.v2.exception;
 
 /**
  * Created by gaoang on 2018/4/9.

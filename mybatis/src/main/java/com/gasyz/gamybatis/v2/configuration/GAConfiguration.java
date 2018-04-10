@@ -1,0 +1,25 @@
+package com.gasyz.gamybatis.v2.configuration;
+
+import com.gasyz.gamybatis.v2.session.GASqlSession;
+import lombok.Data;
+
+/**
+ * Created by gaoang on 2018/4/9.
+ */
+@Data
+public class GAConfiguration {
+
+    private String scanPath;
+
+    private GAMapperRegistory gaMapperRegistory;
+
+    public GAConfiguration(String scanPath) {
+        this.scanPath = scanPath;
+        gaMapperRegistory = new GAMapperRegistory(scanPath);
+    }
+
+    public <T> T getMapper(Class<T> clazz, GASqlSession gaSqlSession) {
+        return this.gaMapperRegistory.getMapper(clazz, gaSqlSession);
+    }
+
+}
