@@ -1,5 +1,6 @@
 package com.gasyz.gamybatis.v2.session;
 
+import com.gasyz.gamybatis.v2.configuration.MapperData;
 import com.gasyz.gamybatis.v2.exception.TooManyResultsException;
 import com.gasyz.gamybatis.v2.configuration.GAConfiguration;
 import com.gasyz.gamybatis.v2.executor.GAExecutor;
@@ -24,8 +25,8 @@ public class GASqlSession {
         return gaConfiguration.getMapper(clazz,this);
     }
 
-    public <T> T selectOne(String statement,Object[] parameter) {
-        List<T> list = this.selectList(statement, parameter);
+    public <T> T selectOne(MapperData mapperData, Object[] parameter) {
+        List<T> list = this.selectList(mapperData, parameter);
         if (list.size()==1) {
             return list.get(0);
         } else if (list.size()>1) {
@@ -35,7 +36,7 @@ public class GASqlSession {
         }
     }
 
-    public <E> List<E> selectList(String statement, Object[] parameter) {
-        return gaExecutor.query(statement,parameter);
+    public <E> List<E> selectList(MapperData mapperData, Object[] parameter) {
+        return gaExecutor.query(mapperData,parameter);
     }
 }

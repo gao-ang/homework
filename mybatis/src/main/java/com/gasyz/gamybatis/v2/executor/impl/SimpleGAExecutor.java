@@ -1,5 +1,6 @@
 package com.gasyz.gamybatis.v2.executor.impl;
 
+import com.gasyz.gamybatis.v2.configuration.MapperData;
 import com.gasyz.gamybatis.v2.executor.GAExecutor;
 
 /**
@@ -7,8 +8,8 @@ import com.gasyz.gamybatis.v2.executor.GAExecutor;
  */
 public class SimpleGAExecutor implements GAExecutor {
 
-    public <T> T query(String statement, Object[] parameter) {
-        System.out.println(statement);
+    public <T> T query(MapperData mapperData, Object[] parameter) {
+        System.out.println(mapperData);
         return null;
     }
 }

@@ -27,7 +27,7 @@ public class GAMapperProxy<T> implements InvocationHandler {
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         MapperData mapperData = methodCache.get(method.getName());
         if (mapperData != null) {
-            return gaSqlSession.selectOne(mapperData.getSql(),args);
+            return gaSqlSession.selectOne(mapperData,args);
         }
         return method.invoke(proxy,method);
     }
