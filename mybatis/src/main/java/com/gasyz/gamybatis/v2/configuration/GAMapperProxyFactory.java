@@ -38,7 +38,7 @@ public class GAMapperProxyFactory<T> {
             Annotation[] annotations = method.getAnnotations();
             for (Annotation annotation: annotations) {
                 if (annotation instanceof SelectSql) {
-                    mapperMethod.put(method.getName(),new MapperData(((SelectSql) annotation).value(),mapperInterface));
+                    mapperMethod.put(method.getName(),new MapperData(((SelectSql) annotation).value(),method.getReturnType()));
                 }
             }
         }
