@@ -25,7 +25,7 @@ public class GASqlSession {
         return gaConfiguration.getMapper(clazz,this);
     }
 
-    public <T> T selectOne(MapperData mapperData, Object[] parameter) {
+    public <T> T selectOne(MapperData mapperData, Object[] parameter) throws Exception {
         List<T> list = this.selectList(mapperData, parameter);
         if (list.size()==1) {
             return list.get(0);
@@ -36,7 +36,7 @@ public class GASqlSession {
         }
     }
 
-    public <E> List<E> selectList(MapperData mapperData, Object[] parameter) {
+    public <E> List<E> selectList(MapperData mapperData, Object[] parameter) throws Exception {
         return gaExecutor.query(mapperData,parameter);
     }
 }
