@@ -18,7 +18,8 @@ public class GASqlSession {
 
     public GASqlSession(GAConfiguration gaConfiguration, GAExecutor gaExecutor) {
         this.gaConfiguration = gaConfiguration;
-        this.gaExecutor = gaExecutor;
+        //加入plugin的executor
+        this.gaExecutor = (GAExecutor)gaConfiguration.getGaInterceptorChain().PluginAll(gaExecutor);
     }
 
     public <T> T getMapper(Class<T> clazz) {

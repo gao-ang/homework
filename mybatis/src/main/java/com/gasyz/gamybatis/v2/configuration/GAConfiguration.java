@@ -1,5 +1,7 @@
 package com.gasyz.gamybatis.v2.configuration;
 
+import com.gasyz.gamybatis.v2.plugin.GAInterceptor;
+import com.gasyz.gamybatis.v2.plugin.GAInterceptorChain;
 import com.gasyz.gamybatis.v2.session.GASqlSession;
 import lombok.Data;
 
@@ -13,6 +15,8 @@ public class GAConfiguration {
 
     private GAMapperRegistory gaMapperRegistory;
 
+    private final GAInterceptorChain gaInterceptorChain = new GAInterceptorChain();
+
     public GAConfiguration(String scanPath) {
         this.scanPath = scanPath;
         gaMapperRegistory = new GAMapperRegistory(scanPath);
@@ -22,4 +26,7 @@ public class GAConfiguration {
         return this.gaMapperRegistory.getMapper(clazz, gaSqlSession);
     }
 
+    public void addInterceptor(GAInterceptor gaInterceptor) {
+        this.gaInterceptorChain.addInterceptor(gaInterceptor);
+    }
 }
