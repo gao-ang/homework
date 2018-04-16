@@ -52,7 +52,7 @@ public class GAPlugin implements InvocationHandler {
             throw new PluginException("没有找到@Intercepts注解在"+gaInterceptor.getClass().getName());
         } else {
             Signature[] signatures = interceptsAnnotation.value();
-            if (signatures !=null && signatures.length>1) {
+            if (signatures !=null && signatures.length>0) {
                 HashMap<Class<?>,Set<Method>> signatureMap = new HashMap();
                 for (Signature signature:signatures) {
                     Set<Method> methods = signatureMap.get(signature.type());

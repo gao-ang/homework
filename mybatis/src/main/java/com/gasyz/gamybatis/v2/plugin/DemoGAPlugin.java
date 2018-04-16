@@ -1,5 +1,6 @@
 package com.gasyz.gamybatis.v2.plugin;
 
+import com.gasyz.gamybatis.v2.configuration.MapperData;
 import com.gasyz.gamybatis.v2.executor.GAExecutor;
 import org.apache.ibatis.plugin.Intercepts;
 import org.apache.ibatis.plugin.Invocation;
@@ -12,14 +13,15 @@ import java.util.Properties;
  */
 @Intercepts(@Signature(
         type = GAExecutor.class,
-        method = "select",
-        args = {}
+        method = "query",
+        args = {MapperData.class,Object[].class}
 ))
 public class DemoGAPlugin implements GAInterceptor {
 
 
-    public Object intercept(Invocation var1) throws Throwable {
-        return null;
+    public Object intercept(Invocation invocation) throws Throwable {
+        System.out.println("测试插件");
+        return invocation.proceed();
     }
 
     /**
